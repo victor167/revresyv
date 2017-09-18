@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DEMO</title>
+	<script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+	<h4>Service</h4>
+	<div><label>Name</label><input type="text" id="name"/></div>
+	<div><label>Url</label><input type="text" id="url"/></div>
+	<div><label>Script</label><input type="text" id="script"/></div>
+	<div><label>Logo</label><input type="text" id="logo"/></div>
+
+	<div><input type="button" id="btnsend" value="Enviar"></div>
+	
+
+	<script type="text/javascript">
+		var socket = io.connect("http://localhost:8080", {"forceNew": true});
+
+		var name = document.getElementById('name');
+		var url = document.getElementById('url');
+		var script = document.getElementById('script');
+		var logo = document.getElementById('logo');
+		var btnsend = document.getElementById('btnsend');
+
+		btnsend.addEventListener("click",function(){
+			socket.emit("set-service",{
+				name:name.value,
+				url:url.value,
+				script:script.value,
+				logo:logo.value
+			});
+		});
+
+		
+		/*socket.on("messages",function(data){
+			console.log(data);
+		});*/
+
+	</script>
+</body>
+</html>
