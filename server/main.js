@@ -16,7 +16,6 @@ app.use(express.static('public'));
 });
 */
 
-//Server Web Socket
 io.on('connection',function(socket){
 	console.log('Alguien se ha conectado con Socket');
 
@@ -27,17 +26,4 @@ io.on('connection',function(socket){
 	/*socket.emit('messages',{
 		'name': 'Victor Recines'
 	});*/
-});
-
-/*
-PARA .NET
-*/
-var servernet = require("net").createServer();
-
-servernet.listen(8081,function(){
-	console.log("Servidor corriendo en http://localhost:8081");
-});
-
-servernet.on("connection", function(socket){
-	console.log('Alguien se ha conectado con netserver');
 });
